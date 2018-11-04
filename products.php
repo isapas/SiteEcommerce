@@ -1,10 +1,10 @@
 <?php
-//  session_start();// je commence une session//
-  //je verifie: si elle est vide ça signifie que je ne suis pas connecté retour vers la page MongoWriteConcernException//
+  //je verifie: si elle est vide ça signifie que je ne suis pas connecté retour vers la page connexion//
+session_start();
   if (empty($_SESSION)) {
        header("Location: index.php");
      } // affiche une erreur de session deja connecté
-     
+
   //var_dump($_SESSION); pour vérifier les infos de session//
 
 include("Template/header.php");
@@ -13,8 +13,6 @@ require 'function.php';
 $products = getProducts();
 //var_dump($products);//
 ?>
-
-<!--main sans margin top et bottom -->
 <main>
  <div class="container-fluid">
    <!-- Aside -->
@@ -22,27 +20,28 @@ $products = getProducts();
      include("Template/aside.php");
    ?>
    <!-- section qui contient mes fiches produits -->
-   <!--container des fiches produits  -->
-     <section class="row">
-       <div class="card-group container">
+
+     <section class="row"> <!--initialise une grille à 12 colonnes 100% du viewport-->
+       <div class="card-group container">   <!--container des fiches produits  -->
          <div class="row">
          <!--insère chaque fiche produit existante dans getProducts dans un tempplate de productcard-->
          <?php
          //parcours le tableau $products contenu dans getProducts()//
          //analyse le contenue de chaque clé et sa valeur//
-         foreach ($products as $key =>$value){
-           //affiche un template de fiche produit//
-             echo '<div class="col-4 ">
-                   <article class="card mb-3"
-                     <img class="card-img-top" src="tile.png" alt=""' . $value["name"] . " image>
-                     <div class='card-body'>
-                       <h5  class='card-title'>" . $value['name'] . '</h5>
-                       <p class="card-text text-center">'. $value["price"] . '</p>
-                       <a href="singleprod.php?id='  . htmlspecialchars($value["id"]) . ' class="btn btn-primary"> Voir ce produit</a>
-                     </div>
-                   </div>';               }
-          ?>
-        </div>
+         foreach ($products as $key =>$productdetail){
+           //affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée//
+           echo '<div class="col-4 ">
+                    <article class="card mb-3"
+                      <img class="card-img-top" src="tile.png" alt=""' . $productdetail['name'] . '>
+                      <div class="card-body">
+                         <h5  class="card-title">' . $productdetail['name'] . '</h5>
+                         <p class="card-text text-center">'. $productdetail['price'] . '</p>
+                         <a href="singleprod.php?id='  . htmlspecialchars($productdetail['id']) . ' class="btn btn-primary"> Voir ce produit</a>
+                      </div>
+                      </article>
+                    </div>';
+          }
+         ?>
        </div>
      </section>
  </div>

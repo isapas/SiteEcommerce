@@ -1,15 +1,14 @@
 <!-- Voici la page qui va afficher le formulaire dans le template -->
-
 <!--affichage du header sur toutes les pages-->
 <?php include("Template/header.php"); ?>
 
 <!-- start of the main disconected-->
 <main class="container d-flex h-50 align-items-center justify-content-center" >
   <div class="row">
-<!-- formulaire de conncetion -->
+<!-- formulaire de connexion -->
     <form class="login-form mx-auto mt-5" action="login.php" method="post">
       <div class="form-group col">
-        <h1 class="h3 mb-3 font-weight-normal">Veuillez vous identifier</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Merci de vous identifier</h1>
       </div>
       <div class="col form-group">
         <label for="text" class="sr-only">Votre nom:</label>

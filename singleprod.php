@@ -10,7 +10,7 @@
     <div class="container">
       <img class="card-img-top" src="tile.png" alt="Card image cap">
     </div>
-
+<!-- php foreach ($products as $key =>$productdetail) echo avec concaténation valeur de la vatiale -->
     <div class="card-body">
       <h5  class="card-title">name</h5>
       <p class="card-text">description</p>
