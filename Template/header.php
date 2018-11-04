@@ -1,11 +1,12 @@
+
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title></title>
-  <meta name="description" content="">
+  <title>exercice identification sur site ecommerce</title>
+  <meta name="description" content="site_ecommerce_php">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="manifest" href="site.webmanifest">
@@ -18,5 +19,13 @@
 </head>
 
 <body>
-
 <!-- Ici démarre le code de votre header -->
+<header class="header text-white">
+  <div class="container-fluid bg-info">
+    <div class="row text-center">
+      <div class="col-12">
+        <h1>Bienvenue sur ce site e-commerce de ventes  très privées</h1>
+     </div>
+    </div>
+  </div>
+</header>
