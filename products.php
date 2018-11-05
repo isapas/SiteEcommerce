@@ -1,50 +1,64 @@
 <?php
-  //je verifie: si elle est vide ça signifie que je ne suis pas connecté retour vers la page connexion//
-session_start();
-  if (empty($_SESSION)) {
+//je redémarre la session pour avoir accès aux infos qui y sont contenues
+  session_start();
+  //si pas d'utilisateur enregistré dans la session renvoi vers page de connection
+    if (!isset($_SESSION['user'])) {
        header("Location: index.php");
-     } // affiche une erreur de session deja connecté
-
+     exit;
+   }
   //var_dump($_SESSION); pour vérifier les infos de session//
 
-include("Template/header.php");
-//appelle la fonction qui contient la base de donnée des membres//
-require 'function.php';
-$products = getProducts();
-//var_dump($products);//
+  //appelle la fonction qui contient la base de donnée des membres//
+  if(!function_exists('getProducts')) { require 'Model/function.php'; }
+  include 'Template/header.php';
+//je récupère mon tableau de produits via la fonction getProducts
+//fatal error already declared function??
+  $products = getProducts();
+  //
+
+  //var_dump($products);// pour vérifier que la fonction retourne les produits
 ?>
-<main>
- <div class="container-fluid">
-   <!-- Aside -->
+
+ <div class="row mt-5">
+   <!-- Aside --
    <?php
      include("Template/aside.php");
    ?>
    <!-- section qui contient mes fiches produits -->
 
-     <section class="row"> <!--initialise une grille à 12 colonnes 100% du viewport-->
+     <section class="col-lg-9"> <!--initialise une grille à 12 colonnes 100% du viewport-->
        <div class="card-group container">   <!--container des fiches produits  -->
          <div class="row">
          <!--insère chaque fiche produit existante dans getProducts dans un tempplate de productcard-->
          <?php
          //parcours le tableau $products contenu dans getProducts()//
-         //analyse le contenue de chaque clé et sa valeur//
-         foreach ($products as $key =>$productdetail){
-           //affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée//
-           echo '<div class="col-4 ">
-                    <article class="card mb-3"
-                      <img class="card-img-top" src="tile.png" alt=""' . $productdetail['name'] . '>
-                      <div class="card-body">
-                         <h5  class="card-title">' . $productdetail['name'] . '</h5>
-                         <p class="card-text text-center">'. $productdetail['price'] . '</p>
-                         <a href="singleprod.php?id='  . htmlspecialchars($productdetail['id']) . ' class="btn btn-primary"> Voir ce produit</a>
-                      </div>
-                      </article>
-                    </div>';
-          }
-         ?>
-       </div>
-     </section>
+         //analyse le contenu de chaque clé et sa valeur//
+         foreach ($products as $key =>$product){//je ferme la balise php après l'accolade pour pouvoir ecrire mon html normalement
+           ?>
+        <!-- affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée -->
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal"><?php echo $product["name"] ?></h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">Prix : <?php echo $product["price"] ?> <small class="text-muted">/ mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li><?php echo $product["description"] ?></li>
+            <li>Lieu de production: <?php echo $product["made_in"] ?></li>
+            <li>>Catégorie : <?php echo $product["category"] ?></li>
+          </ul>
+          <button type="button" class="btn btn-lg btn-block btn-primary"><a href='singleprod.php'>détail</a></button>
+        </div>
+      </div>
+      <?php
+       //On ferme la boucle en enserrant l'accolade
+         }
+        ?>
+      </div>
+    </div>
+  </section>
  </div>
-</main>
 
-<?php include("Template/footer.php")?>
+<?php
+include 'Template/footer.php'
+?>
