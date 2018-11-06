@@ -8,7 +8,7 @@
       $_POST[$key] = htmlspecialchars($value);
 }
   $users =getUsers();//récupère les utilisateurs stockés dans la fonction getUsers
-var_dump($users);
+//var_dump($users);
 
   foreach ($users as $user) {
   //parcoure le tableau contenant les utilisateurs et verifie si les données entrées par l'utilisateur existent dans le tableau et corresponent à leur valuer//
