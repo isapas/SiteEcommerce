@@ -14,6 +14,7 @@
 //je récupère mon tableau de produits via la fonction getProducts
   require 'Model/function.php';
   $products = getProducts();
+
   //var_dump($products);// pour vérifier que la fonction retourne les produits
 ?>
 
@@ -32,7 +33,7 @@
          //parcours le tableau $products contenu dans getProducts()//
          //analyse le contenu de chaque clé et sa valeur//
          foreach ($products as $key =>$product){//je ferme la balise php après l'accolade pour pouvoir ecrire mon html normalement
-          // $_SESSION['product'] = $product;
+
            ?>
         <!-- affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée -->
         <div class="card mb-4 shadow-sm">
@@ -44,9 +45,12 @@
           <ul class="list-unstyled mt-3 mb-4">
             <li><?php echo $product["description"] ?></li>
             <li>Lieu de production: <?php echo $product["made_in"] ?></li>
-            <li>>Catégorie : <?php echo $product["category"] ?></li>
+            <li>Catégorie : <?php echo $product["category"] ?></li>
+            <li><?php  if($product["stock"] == true) {echo "en stock";} if ($product['stock'] == false) {echo "indisponible";} ?></li>
           </ul>
-          <a href='singleprod.php'>détail</a>
+        <?php
+          echo "<a href='singleprod.php?id=" . $product['id'] . "'>détail</a>";?>
+
         </div>
       </div>
       <?php

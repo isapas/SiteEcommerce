@@ -10,40 +10,46 @@
 
   //déclare où trouver les informations dont on a besoin//
   include 'Template/header.php';
-?>
+  ?>
     <div class="container"-->
-      <div class="row">
+      <div class="row">1
     <?php include 'Template/aside.php'; ?>
     <div class="col-lg-9">
       <?php
       require 'Model/function.php';
       $products = getProducts();
       //var_dump($products);// pour vérifier que la fonction retourne les produits
+      $id = $_GET["id"];
 
-    //  foreach ($products as $product => $key){//je ferme la balise php après l'accolade pour pouvoir ecrire mon html normalement
-        ?>
+        foreach ($products as $key => $product) {
+          if ($product['id'] == $id) {
+    ?>
         <!--aside qui contient une photo du produit et son id à gauche  -->
       <aside class="card mt-4">
         <img class="card-img-top img-fluid" src="#" alt="logo">
-        <p class="card-text"><?php echo $_SESSION['product']['id'] ?></p>
+        <p class="card-text"><?php echo $product['id'] ?></p>
         </aside>
         <!--à gauche  -->
           <article class="card-body">
 
-            <h3 class="card-title"><?php echo $_SESSION['product']["name"] ?></h3>
-            <p class="card-text"><?php echo $_SESSION['product']['description'] ?></p>
+            <h3 class="card-title"><?php echo $product['name'] ?></h3>
+            <p class="card-text"><?php echo $product['description'] ?></p>
           </article>
 
-        <p class="card-text"><?php echo $_SESSION['product']['made_in'] ?></p>
-        <p class="card-text"><?php echo $_SESSION['product']['category'] ?></p>
-        <h4><?php echo $_SESSION['product']["price"] ?></h4>
+        <p class="card-text"><?php echo $product['made_in'] ?></p>
+        <p class="card-text"><?php echo $product['category'] ?></p>
+        <h4><?php echo $product['price'] ?></h4>
         <hr>
         <a href="card.php" class="btn btn-success">Ajouter au panier</a>
-        <button type="btn" name="retour"><a href="products.php">Retour</a></button>
+        <a href="products.php">Retour</a>
       </div>
     </div>
   </div>
-    <!-- /.card -->
 
+<?php
+    }
+  }
 ?>
+
+    <!-- /.card -->
 <?php include 'Template/footer.php'; ?>
