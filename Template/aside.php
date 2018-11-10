@@ -15,4 +15,5 @@
 
   ?>
     </ul>
+    <a class="btn-primary" href="logout.php"> Se déconnecter</a>
  </aside>

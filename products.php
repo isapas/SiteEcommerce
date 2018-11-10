@@ -30,9 +30,9 @@
          <div class="row">
          <!--insère chaque fiche produit existante dans getProducts dans un tempplate de productcard-->
          <?php
-         //parcours le tableau $products contenu dans getProducts()//
+         //parcourre le tableau $products contenu dans getProducts()
          //analyse le contenu de chaque clé et sa valeur//
-         foreach ($products as $key =>$product){//je ferme la balise php après l'accolade pour pouvoir ecrire mon html normalement
+          foreach ($products as $key =>$product){//je ferme la balise php après l'accolade pour pouvoir ecrire mon html normalement
 
            ?>
         <!-- affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée -->
@@ -46,7 +46,16 @@
             <li><?php echo $product["description"] ?></li>
             <li>Lieu de production: <?php echo $product["made_in"] ?></li>
             <li>Catégorie : <?php echo $product["category"] ?></li>
-            <li><?php  if($product["stock"] == true) {echo "en stock";} if ($product['stock'] == false) {echo "indisponible";} ?></li>
+            <li>
+              <?php
+              if($product["stock"]) {
+                echo "en stock";
+              }
+              else {
+                echo "indisponible";
+              }
+              ?>
+            </li>
           </ul>
         <?php
           echo "<a href='singleprod.php?id=" . $product['id'] . "'>détail</a>";?>

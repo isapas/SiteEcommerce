@@ -2,6 +2,7 @@
 <?php
 //je charge le fichier qui contient les fonctions qui renvoient les données
   require 'Model/function.php';
+  require 'Service/manageBasket.php';
 //je verifie queles champs ne sont pas vides
   if (!empty($_POST)) {
     foreach ($_POST as $key => $value) {//les informations postées par l'utilisateur sont sécurisées
@@ -15,9 +16,11 @@
       if ($user['name'] === $_POST['name'] && $user['password'] === $_POST["password"]) {
         session_start();
         $_SESSION['user'] = $user;
+        CreateBasket();
         header("Location: products.php");//redirige vers la page products.php//
         exit;
       }
+
     }
         header("Location: index.php?message=Merci de renseigner des identifiants valides");
         exit; //recharge la page de connection en demandant de renseigner a nouveau les infos dans la barre d'adresse//

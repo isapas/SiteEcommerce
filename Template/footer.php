@@ -1,7 +1,7 @@
 <!-- Ici démarre le code de votre footer -->
 </main>
 <footer class="container-fluid text-center">
-      <p class="bg-info">exercice réalisé par Isabelle Passeniers @ 2018</p>
+      <p class="mb-0 bg-info">exercice réalisé par Isabelle Passeniers @ 2018</p>
 </footer>
 
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>
