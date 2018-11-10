@@ -1,25 +1,56 @@
 <?php
-  //déclare où trouver les informations dont on a besoin//
+//je redémarre la session pour avoir accès aux infos qui y sont contenues
+  session_start();
+  //si pas d'utilisateur enregistré dans la session renvoi vers page de connection
+    require 'Model/function.php';
+    if (!isset($_SESSION['user'])) {
+       header("Location: index.php");
+     exit;
+   }
+  //var_dump($_SESSION);// pour vérifier les infos de session//
+  $products = getProducts();
+  //var_dump($products);// pour vérifier que la fonction retourne les produits
+  $id = $_GET["id"];
+    ?>
 
-  include 'Template/header.php';
-?>
-<main>
+
+  <?php include 'Template/header.php';?>
+    <div class="container"-->
+      <div class="row">
     <?php include 'Template/aside.php'; ?>
+    <div class="col-lg-9">
+      <?php
+        foreach ($products as $key => $product) {
+          if($product['id'] == $id) {
+    ?>
+          <article class="card-body">
 
-  <div class="container-fluid card">
-    <div class="container">
-      <img class="card-img-top" src="tile.png" alt="Card image cap">
-    </div>
-<!-- php foreach ($products as $key =>$productdetail) echo avec concaténation valeur de la vatiale -->
-    <div class="card-body">
-      <h5  class="card-title">name</h5>
-      <p class="card-text">description</p>
-      <p class="card-text">Made in:</p>
-      <p class="card-text">catégorie</p>
-      <h6 class="card-text">prix:</h6>
-      <button type="btn" name="retour"><a href="products.php">Retour</a></button>
+            <h3 class="card-title"><?php echo $product['name']; ?></h3>
+            <p class="card-text"><?php echo $product['description']; ?></p>
+          </article>
+
+        <p class="card-text"><?php echo $product['made_in'] ;?></p>
+        <p class="card-text"><?php echo $product['category'] ;?></p>
+        <p><?php
+        if($product["stock"]) {
+          echo "en stock";
+        }
+        else {
+          echo "indisponible";
+        }
+        ?></p>
+        <h4><?php echo $product['price']; ?></h4>
+        <hr>
+        <a href="cartTreatment.php?id=<?php echo $product['id'];?>" class="btn btn-success">Ajouter au panier</a>
+        <a href="products.php">Retour</a>
+      </div>
     </div>
   </div>
 
-</main>
+<?php
+    }
+  }
+?>
+
+    <!-- /.card -->
 <?php include 'Template/footer.php'; ?>
