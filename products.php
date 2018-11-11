@@ -13,7 +13,10 @@
   include 'Template/header.php';
 //je récupère mon tableau de produits via la fonction getProducts
   require 'Model/function.php';
+  require 'Service/formCleaner.php';
   $products = getProducts();
+
+
 
   //var_dump($products);// pour vérifier que la fonction retourne les produits
 ?>

@@ -12,14 +12,15 @@ function userIsRegistered($users, $form) {
 
 function startUserSession($user) {
   session_start();
-  $_SESSION["user"] = $user;
+  $_SESSION['user'] = $user;
+  CreateCart();
 }
 
  ?>
  <?php
 function EndUserSession() {
-  session_start();
-  session_unset();
-  session_destroy();
+  session_start();//je démarre la session//
+  session_unset();//je trétruis lles variables de session//
+  session_destroy(); //je détruis la session//
 }
 ?>
