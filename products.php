@@ -14,11 +14,9 @@
 //je récupère mon tableau de produits via la fonction getProducts
   require 'Model/function.php';
   require 'Service/formCleaner.php';
+
+  //récupère les produits et les stocke dans $products
   $products = getProducts();
-
-
-
-  //var_dump($products);// pour vérifier que la fonction retourne les produits
 ?>
 
  <div class="row mt-5">
@@ -28,15 +26,11 @@
    ?>
    <!-- section qui contient mes fiches produits -->
 
-     <section class="col-lg-9"> <!--initialise une grille à 12 colonnes 100% du viewport-->
-       <div class="card-group container">   <!--container des fiches produits  -->
+     <section class="col-lg-9"> 
+       <div class="card-group container">  
          <div class="row">
-         <!--insère chaque fiche produit existante dans getProducts dans un tempplate de productcard-->
          <?php
-         //parcourre le tableau $products contenu dans getProducts()
-         //analyse le contenu de chaque clé et sa valeur//
-          foreach ($products as $key =>$product){//je ferme la balise php après l'accolade pour pouvoir ecrire mon html normalement
-
+          foreach ($products as $key =>$product){
            ?>
         <!-- affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée -->
         <div class="card mb-4 shadow-sm">
@@ -62,11 +56,9 @@
           </ul>
         <?php
           echo "<a href='singleprod.php?id=" . $product['id'] . "'>détail</a>";?>
-<!-- j'aurai pu passer la position de $key dans $product -->
         </div>
       </div>
       <?php
-       //On ferme la boucle en enserrant l'accolade
          }
         ?>
       </div>

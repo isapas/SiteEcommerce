@@ -14,10 +14,13 @@
             <div class="col-md-12">
                 <div class="row">
                   <!--formulaire de connexion-->
-                    <form class="card mx-auto col-md-6 border-secondary" action="login.php" method="post">
+                    <form class="mx-auto col-md-6 " action="login.php" method="post">
+                      <div class="card border-secondary">
                         <div class="form-group card-header pb-6">
-                          <h3 class="mb-0  my-2 font-weight-bold">Merci de vous identifier</h3>
+                            <h3 class="mb-0 font-weight-bold">Merci de vous identifier</h3>
                         </div>
+                      </div>
+                      <div class="card-body"> 
                         <div class="form-group">
                           <p class="mt-4">
                            <label for="text">Votre nom:</label>
@@ -36,9 +39,10 @@
                         <div class="form-group">
                           <button type="submit" class="btn btn-lg btn-primary btn-block">Envoyer</button>
                         </div>
+                      </div> 
                     </form>
                     <!--formulaire d'inscription-->
-                    <div class="col-md-6 mx-auto">
+                    <form class="col-md-6 mx-auto">
                       <div class="card border-secondary">
                         <div class="card-header">
                           <h3 class="mb-0 my-2">S'enregistrer</h3>
@@ -65,7 +69,7 @@
                           </form>
                       </div>
                     </div>
-                  </div>
+    </form>
                 </div>
                 <!--/row-->
               </div>

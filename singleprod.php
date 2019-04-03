@@ -1,61 +1,53 @@
 <?php
-//je redémarre la session pour avoir accès aux infos qui y sont contenueset afficher l'aside
-  session_start();
-  //si pas d'utilisateur enregistré dans la session renvoi vers page de connection
-    require 'Model/function.php';
-    if (!isset($_SESSION['user'])) {
-       header("Location: index.php");
-     exit;
-   }
-   require 'Model/function.php';
-  //var_dump($_SESSION);// pour vérifier les infos de session//
-    $products = getProducts();
-  //var_dump($products);// pour vérifier que la fonction retourne les produits
-    $id = $_GET["id"];//je récupère les données passées dans l'url
-    $id =intval(htmlspecialchars($_GET['id']));
 
-    $product =getProduct('id');
-    ?>
+session_start();
 
+//Si aucun utilisateur est enregistré en session on renvoi à l'acceuil
+if(!isset($_SESSION["user"])) {
+  header("Location: index.php");
+  exit;
+}
+//chargement des fonctions et du templates du header
+require "Model/function.php";
+include "Template/header.php";
 
-  <?php include 'Template/header.php';?>
-    <div class="container"-->
-      <div class="row">
-    <?php include 'Template/aside.php'; ?>
-    <div class="col-lg-9">
-      <?php
-      //  foreach ($products as $key => $product) {
-        //  if($product['id'] == $id) {
-        if (isset($_get['id']) && !empty($_GET['id'])) {
+//récupère l'id dans l'url
+$id = intval(htmlspecialchars($_GET["id"]));
+//récupère le produit stocké à l'id récupéré par l'url et le stocke dans une variable $product
+$product = getProduct($id);
+ ?>
 
-        }
-        else {
-          echo "oups je ne connais pas ce produit";
-        }
-    ?>
-          <article class="card-body">
-
-            <h3 class="card-title"><?php echo $product['name']; ?></h3>
-            <p class="card-text"><?php echo $product['description']; ?></p>
-          </article>
-
-        <p class="card-text"><?php echo $product['made_in'] ;?></p>
-        <p class="card-text"><?php echo $product['category'] ;?></p>
-        <p><?php
-        if($product["stock"]) {
-          echo "en stock";
-        }
-        else {
-          echo "indisponible";
-        }
-        ?></p>
-        <h4><?php echo $product['price']; ?></h4>
-        <hr>
-        <a href="cartTreatment.php?id=<?php echo $product['id'];?>" class="btn btn-success">Ajouter au panier</a>
-        <a href="cartTreatment.php"?id=. $id . '&action = add"'>Retour</a>
+ <div class="row col-lg-12 ">
+       <!-- Aside avec les informations utilisateur -->
+    <?php include "Template/aside.php"; ?>
+    <section class="col-lg-6 mr-8">
+      <h2><?php echo $product["name"]; ?></h2>
+      <div class="container-fluid">
+        <?php echo $product["description"]; ?>
       </div>
-    </div>
+      <div>
+        <span class="badge badge-secondary">Prix : <?php echo $product["price"] ?>€</span>
+        <?php
+        if($product["stock"]) {
+          echo "<span class='badge badge-success'>Disponible</span>";
+        }
+        else {
+          echo "<span class='badge badge-danger'>Indisponible</span>";
+        }
+         ?>
+        <span class="badge badge-secondary">Catégorie : <?php echo $product["category"] ?></span>
+        <span class="badge badge-secondary">Lieu de production :<?php echo $product["made_in"] ?></span>
+      </div>
+      <?php
+        //Si le produit est disponible on met un boutton d'ajout au panier
+        if($product["stock"]) {
+          echo "<a href='cardTreatment.php?id=". $id . "&action=add' class='btn lightBg my-3'>Ajouter au panier</a>";
+        }
+       ?>
+    </section>
+
   </div>
 
-    <!-- /.card -->
-<?php include 'Template/footer.php'; ?>
+ <?php
+ include "Template/footer.php"
+  ?>

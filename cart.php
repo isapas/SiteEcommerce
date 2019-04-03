@@ -6,17 +6,15 @@ require 'Model/function.php';
 $products = getProducts();
 ?>
 <?php
-//parcourre le tableau $products contenu dans getProducts()
-//analyse le contenu de chaque clé et sa valeur//
- foreach ($_SESSION['panier'] as $key =>$product){//je ferme la balise php après l'accolade pour pouvoir ecrire mon html normalement
+
+ foreach ($_SESSION['panier'] as $key =>$product){
   ?>
   <div class="row mt-5">
     <!-- Aside -->
    <?php
      include "Template/aside.php";
    ?>
-   <!-- section qui contient mes fiches produits -->
-
+ <!-- products cards -->
     <section class="col-lg-9">
       <h2>Votre Panier : </h2>
       <div class="container-fluide">
@@ -31,7 +29,9 @@ $products = getProducts();
             <h4 class="my-0 font-weight-normal"><?php echo $product["name"] ?></h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">Prix : <?php echo $product["price"] ?> <small class="text-muted">€</small></h1>
+          <h1 class="card-title pricing-card-title">Prix : <?php echo $product["price"] ?> 
+            <small class="text-muted">€</small>
+          </h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li><?php echo $product["description"] ?></li>
             <li>Lieu de production: <?php echo $product["made_in"] ?></li>
@@ -51,7 +51,6 @@ $products = getProducts();
         </div>
       </div>
       <?php
-       //On ferme la boucle en enserrant l'accolade//
      }
    }
 

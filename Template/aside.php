@@ -3,7 +3,7 @@
 <?php
 //var_dump($_SESSION['user']);?>
 
-<aside class=" col-lg-3">
+<aside class=" col-lg-4 ml-6">
   <h3>Informations de compte</h3>
 
     <ul class="list-group">
