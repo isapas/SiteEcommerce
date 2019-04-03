@@ -1,29 +1,26 @@
 <?php
       //vérifie si les entrées de formulaires sont vides
-    function CheckentriesEmpty() {
-      foreach( $_POST as $key => $value)
-        if(!$value){
+    function CheckentriesEmpty($form) {
+
+      foreach( $form as $key => $value)
+        if(empty ($value)){
           return true;
         }
       }
 
-  /*        function CheckEntriesOk(){
-            //fonction qui appelle toutes les fonctions qui check la validité des entrées de formulaire
-/*            function checkNameEntry() {
-              if((isset($_POST|['name'] ) && (strlen($_POST['name']) < 3)) {
+
+       function checkEntryLength($value, $length) {
+              if( strlen($value) < $length) {
                     //je redirige vers index.html et j'affiche un message d'erreur
-                    header( 'Location = index.php')
-                    echo $_GET['message'];
+                    header( 'Location: index.php');
+                    exit;
                 }
-          }
-          function  checkPasswordEntry() {
-            if(isset($_POST['password'])) {
+              }
 
+          function checkValuesDiff($value1, $value2) {
+            if( $value1 !== $value2) {
+              header('Location: index.php');
+              exit;
+              }
             }
-
-
-            }
-
-
-*/
  ?>

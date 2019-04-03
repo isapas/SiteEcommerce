@@ -27,7 +27,7 @@
     //je crée une fonction pour enlever un ou plusieurs produits du panier
 
     function removeProduct() {
-      //je récupère l
+      //je récupère l index  de mes données
         $id = $_GET["id"];
         unset($_SESSION["panier"][$id]);
         header('Location: cart.php');

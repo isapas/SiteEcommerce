@@ -62,7 +62,7 @@
           </ul>
         <?php
           echo "<a href='singleprod.php?id=" . $product['id'] . "'>détail</a>";?>
-
+<!-- j'aurai pu passer la position de $key dans $product -->
         </div>
       </div>
       <?php
