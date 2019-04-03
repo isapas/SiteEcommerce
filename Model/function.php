@@ -68,7 +68,7 @@ function getProducts() {
   ];
 }
 function getProduct($id) {
-  $product = getProduct();
-  return $products($id);
+  // $product = getProduct();
+  // return $products($id);
 }
  ?>
