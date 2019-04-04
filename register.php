@@ -1,6 +1,6 @@
 <?php
 require 'Service/EmptyCheck.php';
-var_dump($_POST);
+//var_dump($_POST);
 if(CheckentriesEmpty($_POST)) {
     header('Location: index.php');
 }

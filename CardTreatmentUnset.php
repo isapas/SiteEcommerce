@@ -1,6 +1,6 @@
 <?php
-    if(!isset($_SESSION['panier'])) {
-        unset($_SESSION['panier'] , $product[$id]);
+    if(!isset($_SESSION['cart'])) {
+        unset($_SESSION['cart'] , $product[$id]);
     }
 
 ?>

@@ -18,18 +18,15 @@
   //récupère les produits et les stocke dans $products
   $products = getProducts();
 ?>
-
+<div class="container">
  <div class="row mt-5">
-   <!-- Aside --
-   <?php
-     include "Template/aside.php";
-   ?>
+  
    <!-- section qui contient mes fiches produits -->
-
-     <section class="col-lg-9"> 
-       <div class="card-group container">  
+     <section class="col-lg-7"> 
+       <div class="card-group ">  
          <div class="row">
          <?php
+         
           foreach ($products as $key =>$product){
            ?>
         <!-- affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée -->
@@ -61,11 +58,14 @@
       <?php
          }
         ?>
-      </div>
     </div>
   </section>
- </div>
-
+   <!-- Aside -->
+   <?php
+     include "Template/aside.php"; 
+    ?>
+  </div>
+  </div>
 <?php
-include 'Template/footer.php'
+  include "Template/footer.php";
 ?>

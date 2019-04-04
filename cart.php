@@ -3,28 +3,26 @@ session_start();
 include"Template/header.php";
 include"Template/aside.php";
 require 'Model/function.php';
-$products = getProducts();
-?>
-<?php
 
- foreach ($_SESSION['panier'] as $key =>$product){
+$products = getProducts();
+ foreach ($_SESSION['cart'] as $key =>$product) {
   ?>
   <div class="row mt-5">
     <!-- Aside -->
    <?php
      include "Template/aside.php";
    ?>
- <!-- products cards -->
+    <!-- products cards -->
     <section class="col-lg-9">
-      <h2>Votre Panier : </h2>
-      <div class="container-fluide">
+        <h2>Votre panier : </h2>
+        <div class="container-fluide">
         <div class="row">
           <?php
             //On boucle pour afficher tous les produits contenus dans la variable products
-            foreach ($_SESSION["panier"] as $key => $product) {
+            foreach ($_SESSION["cart"] as $key => $product) {
           ?>
           <!-- affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée -->
-        <div class="card mb-4 shadow-sm">
+         <div class="card mb-4 shadow-sm">
           <div class="card-header">
             <h4 class="my-0 font-weight-normal"><?php echo $product["name"] ?></h4>
         </div>
@@ -44,16 +42,15 @@ $products = getProducts();
               ?>
             </li>
           </ul>
-        <?php
-          echo "<a href='single.php?id=" . $product['id'] . "'>détail</a>";
-          echo "<a href='CardTreatmentUnset.php?key=" . $key . "' class='btn btn-success ml-5'>Supprimer</a>";
-        ?>
+            <?php
+              echo "<a href='single.php?id=" . $product['id'] . "'>détail</a>";
+              echo "<a href='CardTreatmentUnset.php?key=" . $key . "' class='btn btn-success ml-5'>Supprimer</a>";
+            ?>
         </div>
       </div>
-      <?php
-     }
+        <?php
+          }
    }
-
         ?>
         </div>
       </div>
