@@ -21,7 +21,7 @@
       }
 
     }
-        header("Location: index.php?message=Merci de renseigner des identifiants valides");
+        header("Location: index.php?msg=Merci de renseigner des identifiants valides");
         exit; //recharge la page de connection en demandant de renseigner a nouveau les infos dans la barre d'adresse//
   }
 ?>

@@ -6,5 +6,5 @@ if(CheckentriesEmpty($_POST)) {
 }
 checkEntryLength($_POST['name'], 3);
 checkValuesDiff($_POST['password'], $_POST['PasswordVerify']);
-header("Location: index.php?message=Bravo vous avez été inscrit avec succès. Merci de vous connceter");
+header("Location: index.php?msg=Bravo vous avez été inscrit avec succès. Merci de vous connceter");
 ?>

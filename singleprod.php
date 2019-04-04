@@ -21,7 +21,7 @@
   if (isset($_GET["msg"])) {
     $msg = $_GET("msg");
   }
-  ?>
+  ?> 
 
   <div class="container-fluid">
     <div class="row">
@@ -51,7 +51,7 @@
         <?php
           //Si le produit est disponible on met un boutton d'ajout au panier
           if($product["stock"]) {
-            echo "<a href='cardTreatment.php?id=". $product . "&action=add' class='btn lightBg my-3'>Ajouter au panier</a>";
+            echo "<a href='cardTreatment.php?id=". $id . "&action=add' class='btn lightBg my-3'>Ajouter au panier</a>";
           }
         }
         ?>

@@ -1,9 +1,9 @@
 <!--affichage du header sur toutes les pages-->
 <?php include "Template/header.php";
 //pour prévenir la faille XSS convertit les caractères spéciaux en entités html//
-    if (isset($_GET["message"])) {
-        $message = htmlspecialchars ($_GET["message"]);
-        echo "<div class='alert alert-danger mt-2 text-center' role='alert'>"  . $message. "</div>" ;
+    if (isset($_GET["msg"])) {
+        $msg = htmlspecialchars ($_GET["msg"]);
+        echo "<div class='alert alert-danger mt-2 text-center' role='alert'>"  . $msg. "</div>" ;
       }
     //var_dump($_GET);
 ?>

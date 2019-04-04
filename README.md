@@ -13,7 +13,7 @@ utilisateurs du site, alors il est redirigé vers une page produits qui affiche 
 retournés par la fonction d’accès aux produits et dans un aside les informations relatives à
 son profil utilisateur. Les informations de l’utilisateur sont stockées dans une session
 • Si les identifiants rentrés ne correspondent à rien ou que le formulaire n’est pas rempli,
-l’utilisateur est renvoyé sur la page d’accueil (celle du formulaire) avec un message d’erreur
+l’utilisateur est renvoyé sur la page d’accueil (celle du formulaire) avec un  d’erreur
 adéquat. Les message d’erreur sont transmis par l’url
 • Attention la page des produits est inaccessible si l’utilisateur n’est pas authentifié !
 • N’oubliez pas de sécuriser les données transmises par le formulaire et l’url

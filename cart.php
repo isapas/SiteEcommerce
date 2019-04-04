@@ -1,6 +1,18 @@
 <?php
 session_start();
+//verifie que l'utilisateur est connécté sinon renvoie à l'accueil
+if(!isset($_SESSION["user"])) {
+  header("Location: index.php");
+  exit;
+}
+
 include"Template/header.php";
+if(isset($_GET["success"])) {
+  $msg = htmlspecialchars($_GET["success"]);
+  echo "<div class='alert alert-success w-50'>" . $msg . "</div>";
+}
+ ?>
+
 include"Template/aside.php";
 require 'Model/function.php';
 
@@ -8,10 +20,7 @@ $products = getProducts();
  foreach ($_SESSION['cart'] as $key =>$product) {
   ?>
   <div class="row mt-5">
-    <!-- Aside -->
-   <?php
-     include "Template/aside.php";
-   ?>
+   
     <!-- products cards -->
     <section class="col-lg-9">
         <h2>Votre panier : </h2>
@@ -50,11 +59,15 @@ $products = getProducts();
       </div>
         <?php
           }
-   }
+   
         ?>
         </div>
       </div>
     </section>
+     <!-- Aside -->
+   <?php
+     include "Template/aside.php";
+   ?>
  </div>
 
 <?php

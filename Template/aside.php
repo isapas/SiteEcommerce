@@ -12,7 +12,7 @@
       }
   ?>
   </ul>
-  <a href="b.php" class="my-0">Votre panier</a>
+  <a href="cart.php" class="my-0">Votre panier</a>
   <ul class="list-group">
     <?php
       //On boucle sur le cart stocké en session pour afficher tous ses produits
