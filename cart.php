@@ -1,36 +1,29 @@
 <?php
 session_start();
-//verifie que l'utilisateur est connécté sinon renvoie à l'accueil
+//verifie que l'utilisateur est connecté sinon renvoie à l'accueil
 if(!isset($_SESSION["user"])) {
   header("Location: index.php");
   exit;
 }
-
 include"Template/header.php";
+require 'Model/function.php';
+
 if(isset($_GET["success"])) {
   $msg = htmlspecialchars($_GET["success"]);
   echo "<div class='alert alert-success w-50'>" . $msg . "</div>";
 }
- ?>
-
-include"Template/aside.php";
-require 'Model/function.php';
-
-$products = getProducts();
- foreach ($_SESSION['cart'] as $key =>$product) {
   ?>
-  <div class="row mt-5">
-   
+
+  <div class="row mt-5"> 
     <!-- products cards -->
     <section class="col-lg-9">
         <h2>Votre panier : </h2>
         <div class="container-fluide">
         <div class="row">
           <?php
-            //On boucle pour afficher tous les produits contenus dans la variable products
+          //affichage de tous les produits contenus dans la variable products
             foreach ($_SESSION["cart"] as $key => $product) {
           ?>
-          <!-- affiche un template de fiche produit pour chaque tableau contenus dans getProducts et affiche pour chacun la valeur de la clé appelée -->
          <div class="card mb-4 shadow-sm">
           <div class="card-header">
             <h4 class="my-0 font-weight-normal"><?php echo $product["name"] ?></h4>
@@ -53,21 +46,20 @@ $products = getProducts();
           </ul>
             <?php
               echo "<a href='single.php?id=" . $product['id'] . "'>détail</a>";
-              echo "<a href='CardTreatmentUnset.php?key=" . $key . "' class='btn btn-success ml-5'>Supprimer</a>";
+              echo "<a href='CartTreatmentUnset.php?key=" . $key . "' class='btn btn-success ml-5'>Supprimer</a>";
             ?>
         </div>
       </div>
         <?php
           }
-   
         ?>
         </div>
       </div>
     </section>
      <!-- Aside -->
-   <?php
+    <?php
      include "Template/aside.php";
-   ?>
+    ?>
  </div>
 
 <?php

@@ -28,9 +28,7 @@
       <section class="col-lg-6 mr-4">
         <div class="row">
           <?php
-        
             if ($product["id"] == $id) { ?>
-         
               <h2><?php echo $product["name"];?></h2>
               <div class="container-fluid">
                  <?php echo $product["description"]; ?>
@@ -51,15 +49,22 @@
         <?php
           //Si le produit est disponible on met un boutton d'ajout au panier
           if($product["stock"]) {
-            echo "<a href='cardTreatment.php?id=". $id . "&action=add' class='btn lightBg my-3'>Ajouter au panier</a>";
+            echo "<a href='cartTreatment.php?id=". $id . "&action=add' class='btn lightBg my-3'>Ajouter au panier</a>";
+                     if (isset($_GET["msg"]) && $_GET["msg"] === "succes") { ?>
+                        <div class='alert alert-success text-center' role='alert'>
+                           L'article est ajouté au panier avec succès.
+                        </div>
+                      <?php 
+                     } 
           }
-        }
-        ?>
-        </div>
+          }
+          ?>
+
+      </div>
        
-      </section>
-         <!-- Aside avec les informations utilisateur -->
-         <?php include "Template/aside.php"; ?>
+    </section>
+    <!-- Aside avec les informations utilisateur -->
+       <?php include "Template/aside.php"; ?>
     </div>
     </div>
  <?php

@@ -2,7 +2,7 @@
 <?php
 //je charge le fichier qui contient les fonctions qui renvoient les données
   require 'Model/function.php';
-  require 'Service/manageCart.php';
+  require 'Model/cartManager.php';
 //je verifie queles champs ne sont pas vides
   if (!empty($_POST)) {
     foreach ($_POST as $key => $value) {//les informations postées par l'utilisateur sont sécurisées

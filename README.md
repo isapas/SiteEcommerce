@@ -45,3 +45,28 @@ Compétences acquises :
 - Créer un template simple en PHP
 - Afficher des données
 - Utiliser des fonctions de récupération de données
+
+Vous continuez de perfectionner votre site de la semaine précédente. Vous allez y rajouter les
+fonctionnalités suivantes :
+- Possibilité de se déconnecter via un bouton logout
+- Possibilité de visualiser la page affichant les détails d’un produit
+- Possibilité d’ajouter un produit au panier utilisateur avec un message de succès
+- Possibilité de retirer un produit du panier utilisateur avec un message de succès
+- Afficher dans l’aside le contenu du panier
+- Afficher le montant total du panier dans l’aside. Ce montant sera réactualiser à chaque ajout/retrait
+de produits- Accès à une page spécifique qui liste tous les produits du panier sous forme de carte, chaque
+produit a un bouton permettant de retirer du panier
+- Permettre à l’utilisateur de s’inscrire sur la site via un formulaire d’inscription. L’utilisateur doit
+rentrer son nom, son mot de passe, une confirmation du mot de passe et son sexe. Pour l’instant
+vous ne pouvez pas enregistrer cet utilisateur car vous n’avez pas de base de données, vous vérifiez
+simplement l’exactitude des informations rentrées.
+- Pour être valide le formulaire doit remplir les conditions suivantes :
+• Le nom compote au moins 3 caractères
+• Le mot de passe et sa confirmation sont identiques
+• Le mot de passe comporte au moins 6 caractères, une lettre majuscule et un chiffre
+• Tous les champs sont remplis
+- Si le formulaire est valide vous renvoyer l’utilisateur sur la page index avec un message de succès.
+Si vous avez trouvé des erreurs vous le renvoyez sur la page d’inscription avec un message d’erreur
+listant toutes les erreurs trouvées attention les messages sont transmis par l’intermédiaire de
+codes erreur. Le formulaire est pré-rempli avec les réponses que l’utilisateur a transmis
+précédemment.
