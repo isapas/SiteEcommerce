@@ -5,7 +5,7 @@
 <aside class="col-lg-4">
   <i class="fas fa-user-ninja fa-4x mb-3"></i>
   <h3>Informations de compte</h3>
-  <ul class="list-group">
+  <ul class="list-group list-unstyled">
   <?php
     foreach ($_SESSION['user'] as $key => $value) {
       echo "<li class='list-group-item'>".  $key . ":"." " .$value . "</li>";
@@ -13,7 +13,7 @@
   ?>
   </ul>
   <a href="cart.php" class="my-0">Votre panier</a>
-  <ul class="list-group">
+  <ul class="list-group list-unstyled">
     <?php
       //On boucle sur le cart stocké en session pour afficher tous ses produits
       foreach ($_SESSION["cart"] as $key => $product) {
