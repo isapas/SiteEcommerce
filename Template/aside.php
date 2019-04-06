@@ -1,7 +1,7 @@
 <?php
 //var_dump($_SESSION['user']);
 ?>
-
+<!-- user informations-->
 <aside class="col-lg-4">
   <i class="fas fa-user-ninja fa-4x mb-3"></i>
   <h3>Informations de compte</h3>
@@ -11,6 +11,7 @@
       echo "<li class='list-group-item'>".  $key . ":"." " .$value . "</li>";
       }
   ?>
+  <!--cart-->
   </ul>
   <a href="cart.php" class="my-0">Votre panier</a>
   <ul class="list-group list-unstyled">

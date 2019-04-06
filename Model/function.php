@@ -1,5 +1,5 @@
 <?php
-
+//functions used without bdd
 function getUsers() {
   return [
     ["name" => "Jean-luc", "password" => "Simplon1478963", "status" => "admin", "sexe" => "homme"],
